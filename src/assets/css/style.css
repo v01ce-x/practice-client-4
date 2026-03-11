@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+button {
+  cursor: pointer;
+}
+
+
+@theme {
+  --color-error: #BA2100;
+}

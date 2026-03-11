@@ -6,6 +6,7 @@ import { PiniaColada } from '@pinia/colada'
 import App from './App.vue'
 import router from './router'
 
+import '@/assets/css/style.css'
 import 'notivue/notification.css'
 import 'notivue/animations.css'
 

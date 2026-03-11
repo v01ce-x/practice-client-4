@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { AppHeader } from '@/widgets/layout'
+</script>
 
 <template>
-  <header>шапка</header>
+  <app-header />
 
   <main>
     <slot />
