@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { useCarts, useRemoveToCart, type Cart } from '@/entities/cart'
+import { useCarts, useRemoveToCart, usePlacingOrder, type Cart } from '@/entities/cart'
 import { AppButton } from '@/shared/ui'
 import { computed } from 'vue'
 
 const { data: carts } = useCarts()
 const { mutateAsync: removeFromCart } = useRemoveToCart()
+const { mutateAsync: placingOrder } = usePlacingOrder()
 const URL_IMG = import.meta.env.VITE_API_URL_IMG
 
 const groupedCarts = computed(() => {
@@ -33,6 +34,10 @@ const totalPrice = computed(() => {
 
 const handleRemove = (cartId: number) => {
   removeFromCart(cartId)
+}
+
+const onSubmit = () => {
+  placingOrder()
 }
 </script>
 
@@ -84,7 +89,9 @@ const handleRemove = (cartId: number) => {
               <p
                 v-if="item.count > 1"
                 class="text-xl font-bold text-primary-600"
-              >= {{ item.cart.price * item.count }} ₽</p>
+              >
+                = {{ item.cart.price * item.count }} ₽
+              </p>
             </div>
           </div>
 
@@ -98,13 +105,21 @@ const handleRemove = (cartId: number) => {
         </div>
       </div>
 
-      <div class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl border border-primary-200/60 p-6">
+      <div
+        class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl border border-primary-200/60 p-6"
+      >
         <div class="flex justify-between items-center">
           <span class="text-2xl font-bold text-primary-900">Итого:</span>
-          <span class="text-3xl font-bold bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent">
+          <span
+            class="text-3xl font-bold bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent"
+          >
             {{ totalPrice }} ₽
           </span>
         </div>
+
+        <app-button @click="onSubmit()">
+          Оформить заказ
+        </app-button>
       </div>
     </div>
 

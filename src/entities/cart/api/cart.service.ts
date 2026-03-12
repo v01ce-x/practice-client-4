@@ -25,8 +25,16 @@ export const cartService = {
     ),
 
   removeToCart: (product_id: number) =>
-    api.delete(
-      `/cart/${product_id}`,
+    api.delete(`/cart/${product_id}`, {
+      headers: {
+        Authorization: `Bearer ${token.value}`,
+      },
+    }),
+
+  placingOrder: () =>
+    api.post(
+      '/order',
+      {},
       {
         headers: {
           Authorization: `Bearer ${token.value}`,

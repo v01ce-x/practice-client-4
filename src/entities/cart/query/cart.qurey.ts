@@ -43,3 +43,19 @@ export const useRemoveToCart = defineMutation(() => {
     },
   })
 })
+
+export const usePlacingOrder = defineMutation(() => {
+  const queryCache = useQueryCache()
+
+  return useMutation({
+    mutation: cartService.placingOrder,
+
+    onSuccess: () => {
+      queryCache.invalidateQueries({ key: CART_QUERY_KEYS.all })
+    },
+
+    onError: () => {
+      console.log('Плохо')
+    }
+  })
+})
