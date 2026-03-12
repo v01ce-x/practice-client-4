@@ -1,15 +1,28 @@
 <script setup lang="ts">
 import { AppButton } from '@/shared/ui'
-import { push } from 'notivue'
+import { useLogout } from '@/entities/account'
+import { useAuth } from '@/shared/composables'
+
+const { mutateAsync: logout } = useLogout()
+const { token } = useAuth()
+
 </script>
 
 <template>
   <header class="flex justify-between p-4">
-    <h1 @click="push.success('qewqeqe')">Магазинчик</h1>
+    <router-link to="/">
+      <h1>Магазинчик</h1>
+      {{ token }}
+    </router-link>
 
     <nav class="flex items-center gap-x-5">
-      <app-button variant="primary">Войти</app-button>
-      <app-button variant="secondary">Регистрация</app-button>
+      <router-link to="/login">
+        <app-button variant="primary">Войти</app-button>
+      </router-link>
+      <router-link to="/register">
+        <app-button variant="secondary">Регистрация</app-button>
+      </router-link>
+      <app-button @click="logout" variant="primary">Выйти</app-button>
     </nav>
   </header>
 </template>

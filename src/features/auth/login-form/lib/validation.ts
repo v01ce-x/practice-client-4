@@ -1,12 +1,7 @@
 import { z } from 'zod'
 import { toTypedSchema } from '@vee-validate/zod'
 
-const registerSchemaRaw = z.object({
-  fio: z
-    .string({ required_error: 'Поле обязательное' })
-    .min(3, 'Минимум 3 символа')
-    .max(80, 'Максимум 80 символов'),
-
+const loginSchemaRaw = z.object({
   email: z
     .string({ required_error: 'Поле обязательное' })
     .email('Некорректный формат email'),
@@ -18,5 +13,5 @@ const registerSchemaRaw = z.object({
     .regex(/[0-9]/, { message: 'Должна быть хотя бы одна цифра' }),
 })
 
-export const registerSchema = toTypedSchema(registerSchemaRaw)
-export type RegisterFormValues = z.infer<typeof registerSchemaRaw>
+export const loginSchema = toTypedSchema(loginSchemaRaw)
+export type LoginFormValues = z.infer<typeof loginSchemaRaw>

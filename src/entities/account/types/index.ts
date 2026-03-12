@@ -1,1 +1,1 @@
-export type { RegisterBody } from './account.types.ts'
+export type { RegisterBody, LoginBody } from './account.types.ts'
