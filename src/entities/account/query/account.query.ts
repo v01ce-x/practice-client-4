@@ -8,17 +8,18 @@ import { useRouter } from 'vue-router'
 
 export const useRegister = defineMutation(() => {
   const queryCache = useQueryCache()
+  const router = useRouter()
 
   return useMutation({
     mutation: accountService.register,
 
     onSuccess: () => {
-      push.success('супер')
+      push.success('Регистрация прошла успешно')
       queryCache.invalidateQueries({ key: ACCOUNT_QUERY_KEYS.all })
+      router.push('/login')
     },
 
     onError: (error) => {
-      console.log(432)
       push.error(errorHandler(error))
     },
   })
@@ -27,18 +28,19 @@ export const useRegister = defineMutation(() => {
 export const useLogin = defineMutation(() => {
   const queryCache = useQueryCache()
   const { setToken } = useAuth()
+  const router = useRouter()
 
   return useMutation({
     mutation: accountService.login,
 
     onSuccess: (data) => {
       setToken(data.data.user_token)
-
+      push.success('Вы успешно вошли в систему')
       queryCache.invalidateQueries({ key: ACCOUNT_QUERY_KEYS.profile() })
+      router.push('/')
     },
 
     onError: (error) => {
-      console.log(432)
       push.error(errorHandler(error))
     },
   })
@@ -60,7 +62,6 @@ export const useLogout = defineMutation(() => {
     },
 
     onError: (error) => {
-      console.log(432)
       push.error(errorHandler(error))
     },
   })

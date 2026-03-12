@@ -23,4 +23,14 @@ export const cartService = {
         },
       },
     ),
+
+  removeToCart: (product_id: number) =>
+    api.delete(
+      `/cart/${product_id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token.value}`,
+        },
+      },
+    ),
 }

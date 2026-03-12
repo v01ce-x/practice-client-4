@@ -6,8 +6,8 @@ const { data: products } = useProduct()
 </script>
 
 <template>
-  <div v-for="product of products" :key="product.id">
-    <card-product :product="product" />
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <card-product v-for="product of products" :key="product.id" :product="product" />
   </div>
 </template>
 
