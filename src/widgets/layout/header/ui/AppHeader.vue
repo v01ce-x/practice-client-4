@@ -47,6 +47,17 @@ const { header, container, logo, logoText, nav, tokenBadge } = headerVariants()
           :class="tokenBadge()"
         > Авторизован </span>
         <router-link
+          v-if="isAuth"
+          to="/cart"
+        >
+          <app-button
+            variant="secondary"
+            size="sm"
+          >
+            Корзина
+          </app-button>
+        </router-link>
+        <router-link
           v-if="!isAuth"
           to="/login"
         >

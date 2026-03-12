@@ -1,7 +1,7 @@
 import { tv, type VariantProps } from 'tailwind-variants'
 
 export const buttonVariants = tv({
-  base: 'rounded-xl font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform active:scale-95',
+  base: 'inline-flex items-center justify-center font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform active:scale-95 border-0',
   variants: {
     variant: {
       primary: 'bg-gradient-to-r from-primary-500 to-primary-600 text-white hover:from-primary-600 hover:to-primary-700 shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 hover:-translate-y-0.5',
@@ -11,8 +11,8 @@ export const buttonVariants = tv({
     },
     size: {
       sm: 'px-4 py-2 text-sm rounded-lg',
-      md: 'px-6 py-3 text-base',
-      lg: 'px-8 py-4 text-lg',
+      md: 'px-6 py-3 text-base rounded-xl',
+      lg: 'px-8 py-4 text-lg rounded-xl',
     },
   },
   defaultVariants: {

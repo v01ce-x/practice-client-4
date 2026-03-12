@@ -20,6 +20,12 @@ const router = createRouter({
       name: 'Login',
       component: () => import('@/pages/auth/UserLogin.vue'),
       meta: { title: 'Авторизация' }
+    },
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: () => import('@/pages/cart/CartPage.vue'),
+      meta: { title: 'Корзина' }
     }
   ],
 })

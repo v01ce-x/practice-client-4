@@ -1,1 +1,1 @@
-export type { Product } from './cart.types.ts'
+export type { Cart } from './cart.types.ts'
