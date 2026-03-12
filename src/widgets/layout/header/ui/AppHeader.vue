@@ -58,6 +58,17 @@ const { header, container, logo, logoText, nav, tokenBadge } = headerVariants()
           </app-button>
         </router-link>
         <router-link
+          v-if="isAuth"
+          to="/orders"
+        >
+          <app-button
+            variant="secondary"
+            size="sm"
+          >
+            Мои заказы
+          </app-button>
+        </router-link>
+        <router-link
           v-if="!isAuth"
           to="/login"
         >

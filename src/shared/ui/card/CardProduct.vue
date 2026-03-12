@@ -2,6 +2,7 @@
 import { type Product } from '@/entities/product'
 import { useAddToCart } from '@/entities/cart'
 import { AppButton } from '@/shared/ui'
+import { useAuth } from '@/shared/composables'
 
 interface Props {
   product: Product
@@ -9,6 +10,7 @@ interface Props {
 
 const props = defineProps<Props>()
 
+const { isAuth } = useAuth()
 const { mutateAsync } = useAddToCart()
 const URL_IMG = import.meta.env.VITE_API_URL_IMG
 
@@ -43,7 +45,7 @@ const onSubmit = () => {
         </span>
       </div>
 
-      <app-button variant="primary" size="md" @click="onSubmit" class="w-full mt-2 shadow-lg">
+      <app-button v-if="isAuth" variant="primary" size="md" @click="onSubmit" class="w-full mt-2 shadow-lg">
         В корзину
       </app-button>
     </div>
