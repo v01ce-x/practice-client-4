@@ -2,14 +2,18 @@
 import { buttonVariants, type ButtonVariant } from './button.variants.ts'
 
 interface ButtonProps {
-  variant: ButtonVariant['variant']
+  variant?: ButtonVariant['variant']
+  size?: ButtonVariant['size']
 }
 
-defineProps<ButtonProps>()
+const props = withDefaults(defineProps<ButtonProps>(), {
+  variant: 'primary',
+  size: 'md',
+})
 </script>
 
 <template>
-  <button :class="buttonVariants({ variant: variant })">
+  <button :class="buttonVariants({ variant: props.variant, size: 'sm' })">
     <slot />
   </button>
 </template>

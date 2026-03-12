@@ -15,7 +15,7 @@ const model = defineModel()
 </script>
 
 <template>
-  <div class="flex flex-col gap-2">
+  <div>
     <form-input
       v-model="model"
       :type="type"
@@ -27,7 +27,7 @@ const model = defineModel()
     <transition>
       <p
         v-if="error"
-        class="block text-error text-[14px]"
+        class="text-error text-sm mt-1"
       >
         {{ error }}
       </p>
@@ -38,20 +38,18 @@ const model = defineModel()
 <style scoped>
 .v-enter-active,
 .v-leave-active {
-  transition: 0.25s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .v-enter-from,
 .v-leave-to {
-  transform: translateY(-100%);
+  transform: translateY(-8px);
   opacity: 0;
-  max-height: 0;
 }
 
 .v-enter-to,
 .v-leave-from {
   transform: translateY(0);
   opacity: 1;
-  max-height: 16px;
 }
 </style>

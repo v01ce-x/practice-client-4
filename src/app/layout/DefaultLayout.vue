@@ -3,9 +3,11 @@ import { AppHeader } from '@/widgets/layout'
 </script>
 
 <template>
-  <app-header />
+  <div class="min-h-screen bg-gradient-to-br from-primary-50/30 via-white to-primary-50/30">
+    <app-header />
 
-  <main>
-    <slot />
-  </main>
+    <main>
+      <slot />
+    </main>
+  </div>
 </template>
