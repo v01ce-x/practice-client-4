@@ -6,10 +6,7 @@ const { data: products } = useProduct()
 </script>
 
 <template>
-  <div
-    v-for="product of products"
-    :key="product.id"
-  >
+  <div v-for="product of products" :key="product.id">
     <card-product :product="product" />
   </div>
 </template>

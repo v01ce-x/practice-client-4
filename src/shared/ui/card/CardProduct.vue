@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { type Product, useAddToCart } from '@/entities/product'
+import { type Product } from '@/entities/product'
+import { useAddToCart } from '@/entities/cart'
 import { AppButton } from '@/shared/ui'
 
 interface Props {
